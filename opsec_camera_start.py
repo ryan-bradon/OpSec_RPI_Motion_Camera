@@ -13,7 +13,7 @@ while True:
 	if (GPIO.input(04)):
 		try:
 			# Take a picture
-			call("raspistill -e jpg --vflip -q 100 -o /tmp/snapshot.jpg", shell=True)
+			call("raspistill -e jpg --vflip -q 100 -o snapshot_{int(time.time())}.jpg", shell=True)
 		except Exception as e:
 			print(f"Unexpected error:\n{str(e)}")
 		time.sleep(SLEEP_DURATION)
