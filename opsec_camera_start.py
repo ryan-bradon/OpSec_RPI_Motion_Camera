@@ -8,7 +8,8 @@ import RPi.GPIO as GPIO
 # Initialize GPIO 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(04, GPIO.IN)   # GPIO4 is pin 7
-SLEEP_DURATION = 1
+CAMERA_INTERVAL = 1
+SENSOR_INTERVAL = 0.25
 
 # wait for proximity sensor 
 while True:
@@ -18,8 +19,8 @@ while True:
 			call("raspistill -e jpg --vflip -q 100 -o snapshot_{int(time.time())}.jpg", shell=True)
 		except Exception as e:
 			print(f"Unexpected error:\n{str(e)}")
-		time.sleep(SLEEP_DURATION)
+		time.sleep(CAMERA_INTERVAL)
 	else:
-		time.sleep(0.25)
+		time.sleep(SENSOR_INTERVAL)
 
 
